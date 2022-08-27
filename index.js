@@ -1,5 +1,5 @@
 class User {
-    constructor(name,surname,pets,books){
+    constructor(name,surname){
        this.name = name;
        this.surname = surname;
        this.pets = []
@@ -7,28 +7,33 @@ class User {
     }
 
     getFullName(){
+        if(this.name != "" && this.surname != ""){
           return  `Hello, my name is ${this.name} ${this.surname} !!`;
-          
+        }
     }
 
     addPet(petName){
-        this.pets.push(petName);
+        if(petName != ""){
+            this.pets.push(petName);
+        }
     }
 
     countPet(){
         return this.pets.length
     }
 
+
+    // Lu si ves esto, ¿hay alguina forma de prevenir el ingreso de " "? intente pero pero pushea undefinded igualmente :/
     addBook({title,author}){
-        this.books.push({title,author})
+            this.books.push({title,author})
     }
 
     getBookNames(){
-        let newArr = this.books.map(function(book){
+        let titlesArr = this.books.map(function(book){
            return book.title
         }
         )
-        return newArr
+        return titlesArr
     }
 }
 
